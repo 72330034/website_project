@@ -1,0 +1,27 @@
+.text{
+  height: 80vh;
+  background-image: url('C:\Users\user\Desktop\Web2\projectweb1\client\src\assets\Jumpsuits.jpeg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+}
+
+.text-text {
+  margin-left: 50px;
+  color: white;
+}
+
+.text-text h1 {
+  font-size: 45px;
+  font-weight: bold;
+}
+
+.shop-btn {
+  background: #d63384;
+  padding: 12px 25px;
+  color: #fff;
+  border: none;
+  margin-top: 10px;
+  cursor: pointer;
+}

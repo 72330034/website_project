@@ -1,24 +1,45 @@
-import logo from './logo.svg';
 import './App.css';
+import NavBar from "./components/NavBar";
+import About from './pages/About';
+import Home from './pages/Home';
+import ContactUS from './pages/ContactUS';
+import Footer from './components/Footer';
+import {BrowserRouter as Router , Routes , Route } from 'react-router-dom';
+import Category from './pages/Category';
+import Login from './pages/Login'
+import Cart from './pages/Cart'
+import React, {useState} from 'react';
 
-function App() {
+ const App=()=>{
+  
+const [cart, setCart] = useState([]);
+
+  const addToCart = (product) => {
+    console.log('addToCart called in App.js with:', product);
+    setCart(prevCart => [...prevCart, product]);
+  };
+
+  const clearCart = () => {
+    setCart([]);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router >
+        <NavBar /> 
+        <Routes>
+          <Route path = "/" element= {<Home/>}/>
+          <Route path = "/about" element={<About/>} />
+           <Route path = "/contact" element={<ContactUS/>} />
+            <Route path= "/category" element={<Category/>}/>
+            <Route path= "/login-page" element={<Login/>}/>
+        <Route path="/home" element={<Home addToCart={addToCart} />} />
+          <Route path="/cart" element={<Cart cart={cart} clearCart={clearCart} />} />
+        </Routes>
+    <Footer />
+      </Router>
     </div>
+    
   );
 }
 

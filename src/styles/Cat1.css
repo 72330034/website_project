@@ -1,0 +1,17 @@
+.cat1 {
+  text-align: center;
+  padding: 50px;
+}
+
+.cat-grid {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.cat-card img {
+  width: 240px;
+  height: 300px;
+  border-radius: 10px;
+  object-fit: cover;
+}
