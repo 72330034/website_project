@@ -1,33 +1,59 @@
-import  "../styles/Home.css"
-import Cat1 from "../components/Cat1";
+import "../styles/Home.css";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import NewsLetter from "../components/NewsLetter";
 import Text from "../components/Text";
-import Product from '../components/Product';
-import Dresses from "../assets/Dresses.jpeg";
-import Jackets from "../assets/Jackets.jpeg";
-import Tops from "../assets/Tops.jpeg";
-import Jeans from "../assets/Jeans.jpeg";
-const Home=({addToCart})=>{
-  const products = [
-    { id: 1, name: 'Summer Dress', price: 49.99, image: Dresses },
-    { id: 2, name: 'Blouse', price: 29.99, image: Jackets},
-    { id: 3, name: 'Jeans', price: 59.99, image: Tops},
-    { id: 4, name: 'Sweater', price: 39.99, image: Jeans},
-  ];
-return(
-<div className="home">
-  <h1 className="h1">Welcome to D&L Women Store!</h1>
-  <Text/>
-  <Cat1 />
-   <h2>Our Collection</h2>
-      <div className="products-grid">
-        {products.map(product => (
-          <Product key={product.id} product={product} addToCart={addToCart} />
+import Product from "../components/Product";
+import { Link } from "react-router-dom";
+
+const Home = ({ addToCart }) => {
+  const [categories, setCategories] = useState([]);
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    axios.get("http://localhost:5000/categories")
+      .then(res => setCategories(res.data));
+
+    axios.get("http://localhost:5000/products")
+      .then(res => setProducts(res.data));
+  }, []);
+
+  return (
+    <div className="home">
+      <h1>Welcome to D&L Women Store!</h1>
+      <Text />
+
+      {/* ===== Categories Section ===== */}
+      <h2>Shop by Category</h2>
+      <div className="categoryGrid">
+        {categories.map(cat => (
+          <Link to={`/categories/${cat.id}`} key={cat.id}>
+            <div className="categoryItem">
+              <img
+                src={`http://localhost:5000/images/${cat.image}`}
+                alt={cat.name}
+              />
+              <h3>{cat.name}</h3>
+            </div>
+          </Link>
         ))}
       </div>
-  <NewsLetter />
-</div>
-);
-  
-}
+
+      {/* ===== Products Section ===== */}
+      <h2>Our Collection</h2>
+      <div className="productsGrid">
+        {products.map(product => (
+          <Product
+            key={product.id}
+            product={product}
+            addToCart={addToCart}
+          />
+        ))}
+      </div>
+
+      <NewsLetter />
+    </div>
+  );
+};
+
 export default Home;

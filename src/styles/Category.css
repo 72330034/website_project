@@ -1,113 +1,80 @@
-/* ===== GENERAL MENU CONTAINER ===== */
+/* ===== PAGE ===== */
 .category {
   width: 100%;
   min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background-color: #f8f9fa;
-  padding: 30px 15px;
-  box-sizing: border-box;
+  padding: 40px 20px;
+  background-color: #fafafa;
 }
 
 .categoryTitle {
-  font-family: cursive;
-  font-size: 2.5rem;
-  color: #5b585a;
-  margin-bottom: 30px;
   text-align: center;
+  font-size: 2.3rem;
+  color: #d63384;
+  margin-bottom: 40px;
+  font-weight: 600;
 }
 
-/* ===== GRID LAYOUT ===== */
+/* ===== GRID ===== */
 .categoryList {
-  width: 100%;
   max-width: 1200px;
+  margin: auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 25px;
-  place-items: center;
-  padding: 10px;
-  box-sizing: border-box;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 30px;
 }
 
-/* ===== MENU ITEM ===== */
+/* ===== CARD ===== */
 .categoryItem {
-  background-color: #ffffff;
-  border-radius: 15px;
-  width: 100%;
-  max-width: 320px;
-  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.15);
+  background: #ffffff;
+  border-radius: 18px;
   overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .categoryItem:hover {
-  transform: translateY(-5px);
-  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
+  transform: translateY(-6px);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.18);
 }
 
-/* ===== IMAGE AREA ===== */
-.categoryItem div {
+/* ===== IMAGE ===== */
+.categoryImage {
   width: 100%;
-  height: 200px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  height: 300px;
 }
 
-/* ===== TEXT STYLING ===== */
-.categoryItem h1 {
-  font-size: 1.25rem;
-  color: #2a4d69;
-  margin: 15px 10px 5px 10px;
+.categoryImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ===== NAME ===== */
+.categoryName {
+  padding: 18px;
   text-align: center;
 }
 
-.categoryItem p {
-  color: #555;
-  font-size: 0.95rem;
-  margin-bottom: 15px;
-  text-align: center;
+.categoryName h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #d63384;
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
-/* ===== TABLET VIEW ===== */
-@media only screen and (max-width: 992px) {
-  .categoryTitle {
-    font-size: 2rem;
-  }
-  .categoryItem div {
-    height: 180px;
-  }
-  .categoryItem h1 {
-    font-size: 1.1rem;
-  }
+/* ===== REMOVE LINK STYLE ===== */
+.category a {
+  text-decoration: none;
 }
 
-/* ===== MOBILE VIEW ===== */
-@media only screen and (max-width: 600px) {
-  .category {
-    padding: 20px 10px;
+/* ===== MOBILE ===== */
+@media (max-width: 600px) {
+  .categoryImage {
+    height: 230px;
   }
 
   .categoryTitle {
-    font-size: 1.8rem;
-  }
-
-  .categoryItem {
-    max-width: 100%;
-  }
-
-  .categoryItem div {
-    height: 160px;
-  }
-
-  .categoryItem h1 {
-    font-size: 1rem;
-  }
-
-  .categoryItem p {
-    font-size: 0.9rem;
+    font-size: 1.9rem;
   }
 }
